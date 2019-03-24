@@ -14,9 +14,10 @@ def get_trails():
     if request.method == "POST":
         city = request.form["city"]
         state = request.form["state"]
+        return 'asdf' # This return statement just stops a 500 error from occuring
     else:
         form = request.form
-        #todo get saved trails from database
+        return 'asdf'  # This return statement just stops a 500 error from occuring
 
 
 @app.route('/save_trail', methods=['POST'])
