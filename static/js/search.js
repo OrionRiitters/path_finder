@@ -1,3 +1,7 @@
+/*
+ * The event listeners in this file are solely for the 'search' DIV in index.html
+ */
+
 $('#find-path').on('click', function() {
     city = $('#city').val();
     state = $('#state').val();
