@@ -1,11 +1,12 @@
 # this class will start the app will communicate directly with the frontend and the route handler
 from flask import Flask, render_template, request
+from states import STATES
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', states=STATES)
 
 
 @app.route('/get_trails', methods=['POST', 'GET'])

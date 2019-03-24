@@ -14,7 +14,7 @@
 #app-header {
     text-align: center;
     grid-row: 1 / 5;
-    grid-column: 2 / 9;
+    grid-column: 2 / 32;
     background-color: #333333;
     color: white;
 }
@@ -38,6 +38,17 @@
     color: white;
 }
 
+#city {
+    height: 60%;
+    width: 40%;
+    border-radius: 6px;
+    margin-left: 4px;
+}
+
+#state {
+    width: 20%;
+}
+
 #left-header {
     grid-row: 5 / 8;
     grid-column: 2 / 9;
@@ -59,3 +70,19 @@
     color: white;
 }
 
+btn-secondary {
+    width: 25%;
+}
+
+.vertical-center {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.block {
+    width: 18%;
+    height: 60%;
+}
