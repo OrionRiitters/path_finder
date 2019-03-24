@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index')
+    return render_template('index.html')
 
 
 @app.route('/get_trails', methods=['POST', 'GET'])
@@ -20,4 +20,5 @@ def get_trails():
 
 @app.route('/save_trail', methods=['POST'])
 def save_trails():
+    return None
     #todo add trail to database using model calls
