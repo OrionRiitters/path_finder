@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d151c8b-713c-45ad-80e3-47e1bab51eb3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/APIs/geocode.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/APIs/getTrails.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/path_finder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/path_finder.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/APIs/getTrails.py" beforeDir="false" afterPath="$PROJECT_DIR$/APIs/getTrails.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/path_finder$getTrails.coverage" NAME="getTrails Coverage Results" MODIFIED="1553489866772" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/APIs" />
+    <SUITE FILE_PATH="coverage/path_finder$getTrails.coverage" NAME="getTrails Coverage Results" MODIFIED="1553491706652" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/APIs" />
     <SUITE FILE_PATH="coverage/path_finder$geocode.coverage" NAME="geocode Coverage Results" MODIFIED="1553487421424" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/APIs" />
   </component>
   <component name="FavoritesManager">
@@ -36,8 +32,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/APIs/getTrails.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+            <state relative-caret-position="221">
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -221,7 +217,7 @@
       <workItem from="1552511435005" duration="2820000" />
       <workItem from="1553232554394" duration="1408000" />
       <workItem from="1553380006496" duration="1782000" />
-      <workItem from="1553441345294" duration="15645000" />
+      <workItem from="1553441345294" duration="17201000" />
     </task>
     <task id="LOCAL-00001" summary="Created preliminary app file and the two handlers for each; the database and the api classes">
       <created>1552536628232</created>
@@ -230,11 +226,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552536628232</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created preliminary services code (request geocode and getTrails), needs more work">
+      <created>1553490081341</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1553490081341</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21655000" />
+    <option name="totallyTimeSpent" value="23211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="676" y="0" width="697" height="735" extended-state="0" />
@@ -268,7 +271,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created preliminary app file and the two handlers for each; the database and the api classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created preliminary app file and the two handlers for each; the database and the api classes" />
+    <MESSAGE value="Created preliminary services code (request geocode and getTrails), needs more work" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created preliminary services code (request geocode and getTrails), needs more work" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -316,8 +320,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/APIs/getTrails.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="20" column="62" selection-start-line="20" selection-start-column="62" selection-end-line="20" selection-end-column="62" />
+        <state relative-caret-position="221">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
