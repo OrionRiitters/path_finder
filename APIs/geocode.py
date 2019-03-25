@@ -2,11 +2,11 @@ import requests
 
 def geocode(city, state):
 
-    encodedCity = city.replace(' ', '%20')
+    # encodedCity = city.replace(' ', '%20')
 
-    url = 'https://nominatim.openstreetmap.org/search/?format=json&city='+encodedCity+'&state='+state
-    query = {'format':'json','city':encodedCity, 'state':state}
-    data = requests.get(url).json()
+    url = 'https://nominatim.openstreetmap.org/search'
+    query = {'format':'json','city':city, 'state':state}
+    data = requests.get(url, params=query).json()
     lat = data[0]['lat']
     long = data[0]['lon']
     print(lat, long)
