@@ -20,4 +20,4 @@ def get_trails():
 
 @app.route('/save_trail', methods=['POST'])
 def save_trails():
-    #todo add trail to database using model calls
+    # todo add trail to database using model calls
