@@ -12,9 +12,8 @@ $('#find-path').on('click', function() {
           * TODO: Create functions to render leaflet map with JSON
           */
         .then(res => {
-            trails = (JSON.parse(res));
+            trails = JSON.parse(res);
             assembleLeftBox(trails);
-            console.log(trails);
         }
     );
 });
