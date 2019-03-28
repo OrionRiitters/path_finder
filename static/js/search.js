@@ -8,9 +8,13 @@ $('#find-path').on('click', function() {
     $.post('/get_trails', {
         city: city,
         state: state
-    })
+    })   /* Parse JSON and run element assembly functions to prepare left-box.
+          * TODO: Create functions to render leaflet map with JSON
+          */
         .then(res => {
-            console.log(res);
+            trails = (JSON.parse(res));
+            assembleLeftBox(trails);
+            console.log(trails);
         }
     );
 });
