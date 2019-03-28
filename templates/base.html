@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        {% block head %}
+        <title>Path Finder</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/' + cssFile) }}">
+        <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        {% block body %}
+        <div id="app" class="grid-container app-container">
+            <div id="app-header">
+                <div id="header-title" class="vertical-center">
+                    <h1>Path Finder</h1>
+                </div>
+            </div>
+
+            {% block search %}
+            <div id="search">
+                <input id="city" type="text" class="vertical-center" placeholder="Enter City Name">
+                <select id="state" class="vertical-center">
+                    {% for state in states %}
+                    <option value="{{ state }}">{{ state }}</option>
+                    {% endfor %}
+                </select>
+
+                <btn id="find-path" class="btn btn-secondary vertical-center block">
+                    <p class="vertical-center">Find Path</p>
+                </btn>
+
+                <btn id="saved-trails" class="btn btn-secondary vertical-center block">
+                    <p class="vertical-center">Saved Trails</p>
+                </btn>
+            </div>
+            {% endblock %}
+
+            {% block left %}
+            <div id="left-header">
+                <p>Left Header</p>
+            </div>
+            <div id="left-box">
+                <p>Left Box</p>
+            </div>
+            {% endblock %}
+
+            {% block right %}
+            <div id="right-box">
+                <p>Right Box</p>
+            </div>
+            {% endblock %}
+
+        </div>
+        {% endblock %}
+    </body>
+</html>
