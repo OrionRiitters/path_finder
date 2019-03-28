@@ -10,7 +10,7 @@ $('#find-path').on('click', function() {
         state: state
     })
         .then(res => {
-            // Call functions to render leaflet map with JSON
+            console.log(res);
         }
     );
 });
