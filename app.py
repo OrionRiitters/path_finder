@@ -2,6 +2,7 @@
 # this class will start the app will communicate directly with the frontend and the route handler
 from flask import Flask, render_template, request
 from states import STATES
+import json
 app = Flask(__name__)
 
 
@@ -20,8 +21,19 @@ def get_trails():
         state = request.form["state"]
         return 'asdf' # This return statement just stops a 500 error from occuring
     else:
-        form = request.form
-        return 'asdf'  # This return statement just stops a 500 error from occuring
+        json = json.dumps({
+            'id': 7000543,
+            'name': 'Big Trail',
+            'location': 'Boise, Idaho',
+            'description': 'Biggest trail in the west! This good ol\' trail features ugly hills and the world\'s largest mall.',
+            'difficulty': 'blueBack',
+            'stars': 3.4,
+            'longitude': -105.2755,
+            'latitude': 39.9787,
+            'length': 6.7,
+            'imgMedium': 'https://cdn-files.apstatic.com/hike/7005382_medium_1435421346.jpg'
+        })
+        return json # Temporary response to test on front end
 
 
 @app.route('/save_trail', methods=['POST'])
