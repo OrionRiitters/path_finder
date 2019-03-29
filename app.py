@@ -36,7 +36,7 @@ def get_trails():
             'difficulty': 'blueBack',
             'stars': 3.4,
             'longitude': -104.2755,
-            'latitude': 39.9767,
+            'latitude': 40.3687,
             'length': 6.7,
             'imgSmallMed': 'https://cdn-files.apstatic.com/hike/7005382_medium_1435421346.jpg'
         }])

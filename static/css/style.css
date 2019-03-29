@@ -70,7 +70,7 @@
     color: white;
 }
 
-btn-secondary {
+.btn-secondary {
     width: 25%;
 }
 
@@ -85,4 +85,10 @@ btn-secondary {
 .block {
     width: 18%;
     height: 60%;
+}
+
+#map {
+    height: 99%;
+    width: 99%;
+    
 }

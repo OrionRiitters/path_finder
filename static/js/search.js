@@ -13,6 +13,7 @@ $('#find-path').on('click', function() {
           */
         .then(res => {
             trails = JSON.parse(res);
+            renderMap(trails);
             assembleLeftBox(trails);
         }
     );
