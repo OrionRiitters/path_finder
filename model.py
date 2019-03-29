@@ -4,9 +4,6 @@ from flask import g, jsonify, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-# import Flask web app from app.py to connect route requests
-from app import app
-
 database = SqliteDatabase('bucketList.db')
 
 
@@ -44,22 +41,20 @@ class Search (Model):
 database.create_tables([Trail, Search])
 
 
-# need to connect to the database before every request
-# g is one request instance
-# decorated to auto call this database connection instance for every request
-@app.route.before_request
-def before_request():
-    g.db = database
-    g.db.connect()
+def open_close_connection(func):
+    """
+    Decorator used to open and close connections.
+    """
+    def decorated_function(*args):
+        g.db = database
+        g.db.connect()
 
+        response = func(*args)
+        g.db.close()
 
-# close connection instance once request is completed
-# receives the response from the request, returns it to api
-# decorated to auto call after request instance
-@app.route.after_request
-def after_request(response):
-    g.db.close()
-    return response
+        if response:
+            return response
+
 
 
 # FOR ALL BELOW DATABASE METHODS
@@ -69,11 +64,12 @@ def after_request(response):
 
 
 # return all trail records from the database based on whether they have or have not hiked the trail
+@open_close_connection
 def get_bucket_list():
     records = Trail.select().where(Trail.hasHiked == 0)
     return jsonify(model_to_dict(c) for c in records)
 
-
+@open_close_connection
 def get_hiked():
     hiked = Trail.select().where(Trail.hasHiked == 1)
     return jsonify(model_to_dict(c) for c in hiked)
@@ -81,6 +77,7 @@ def get_hiked():
 
 # return a trail record for the passed trail id
 # Throw DoesNotExist exception if not found, return 404 not found code
+@open_close_connection
 def get_by_id(trail_id):
     try:
         c = Trail.get_by_id(trail_id)
@@ -92,6 +89,7 @@ def get_by_id(trail_id):
 # add a new trail record to the database
 # request the trail information from the api
 # return 210 if the record was successfully created
+@open_close_connection
 def add_trail():
     with database.atomic():
         c = Trail.create(**request.form.to_dict())
@@ -99,6 +97,7 @@ def add_trail():
 
 
 # update an existing trail record when user changes hiked status
+@open_close_connection
 def update_trail(trail_id):
     with database.atomic():
         Trail.update(**request.form.to_dict())\
@@ -108,6 +107,7 @@ def update_trail(trail_id):
 
 
 # add a search location to the cache
+@open_close_connection
 def add_search():
     with database.atomic():
         c = Trail.create(**request.form.to_dict())
@@ -116,6 +116,7 @@ def add_search():
 
 # pull from search based on location
 # return 404 if not found
+@open_close_connection
 def get_search(location_entered):
     try:
         c = Trail.select().where(Trail.location == location_entered)

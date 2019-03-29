@@ -8,4 +8,5 @@ def get_trail(lat, lon):
     url = 'https://www.hikingproject.com/data/get-trails'
 
     data = requests.get(url, params=query).json()
+    print(data)
     return data
