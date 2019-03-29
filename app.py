@@ -38,7 +38,7 @@ def get_trails():
             'longitude': -104.2755,
             'latitude': 39.9767,
             'length': 6.7,
-            'imgMedium': 'https://cdn-files.apstatic.com/hike/7005382_medium_1435421346.jpg'
+            'imgSmallMed': 'https://cdn-files.apstatic.com/hike/7005382_medium_1435421346.jpg'
         }])
         return res # Temporary response to test on front end
     else:
