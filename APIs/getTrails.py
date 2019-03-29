@@ -7,4 +7,5 @@ def get_trail(lat, lon):
     query = {'lat':lat, 'lon':lon, 'key':key, 'maxDistance':10, 'maxResults':5}
     url = 'https://www.hikingproject.com/data/get-trails'
 
-    return data = requests.get(url, params=query).json()
+    data = requests.get(url, params=query).json()
+    return data
