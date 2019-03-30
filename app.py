@@ -16,6 +16,7 @@ def index():
     """
     return render_template('index.html', states=STATES, cssFile='style.css')
 
+
 @app.route('/get_trails', methods=['POST', 'GET'])
 def get_trails():
     if request.method == "POST":
@@ -27,11 +28,13 @@ def get_trails():
         bucket_list = db.get_bucket_list()
         return bucket_list
 
+
 @app.route('/save_trail', methods=['POST'])
 def save_trails():
-    id = request.form["id"]
+    form = request.json
+    id = form["id"]
     db.save_trails(id)
-    redirect('/')
+    return "trail added successfully"
 
 
 if __name__ == '__main__':
