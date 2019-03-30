@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request, redirect
 from states import STATES
 import json
+import model
 import handlers.api_handler as api
 import handlers.database_handler as db
 
@@ -31,3 +32,7 @@ def save_trails():
     id = request.form["id"]
     db.save_trails(id)
     redirect('/')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -14,13 +14,13 @@ class Trail(Model):
     id = IntegerField(primary_key=True)
     name = CharField()
     location = CharField()
-    description = CharField()
+    summary = CharField()
     difficulty = CharField()
     stars = DoubleField()
     latitude = DoubleField()
     longitude = DoubleField()
     length = DoubleField()
-    photoUrl = CharField()
+    imgSmallMed = CharField()
     hasHiked = BooleanField(default=False)
 
     class Meta:
