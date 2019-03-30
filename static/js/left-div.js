@@ -46,9 +46,19 @@ function saveTrailBtn(trailEl) {
     btn.innerHTML = 'Save Trail';
     trailEl.append(btn);
     btn.addEventListener('click', function() {
-        $.post('/save_trail',
-            trailEl.getAttribute('json')
-              );
-        console.log(trailEl.getAttribute('json'));
+        let json_data = trailEl.getAttribute('json');
+        $.ajax({
+            url:'/save_trail',
+            type:"POST",
+            data: json_data,
+            contentType:"application/JSON",
+            success: function(){
+                alert("Trailed was added to your bucket list");
+            },
+            error: function () {
+                alert("Trail could not be added")
+            }
+        });
+        console.dir(trailEl.getAttribute('json'));
     });
 }

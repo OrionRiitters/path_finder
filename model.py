@@ -50,10 +50,10 @@ def open_close_connection(func):
         g.db.connect()
 
         response = func(*args)
-        g.db.close()
 
-        if response:
-            return response
+        g.db.close()
+        return response
+    return decorated_function
 
 
 
@@ -81,7 +81,7 @@ def get_hiked():
 def get_by_id(trail_id):
     try:
         c = Trail.get_by_id(trail_id)
-        return jsonify(model_to_dict(c))
+        return jsonify(model_to_dict(c)), 200
     except DoesNotExist:
         return 'Trail Not Found', 404
 
@@ -92,7 +92,7 @@ def get_by_id(trail_id):
 @open_close_connection
 def add_trail():
     with database.atomic():
-        c = Trail.create(**request.form.to_dict())
+        c = Trail.create(**request.json)
         return jsonify(model_to_dict(c)), 201
 
 
@@ -100,7 +100,7 @@ def add_trail():
 @open_close_connection
 def update_trail(trail_id):
     with database.atomic():
-        Trail.update(**request.form.to_dict())\
+        Trail.update(**request.json)\
             .where(Trail.id == trail_id)\
             .execute()
         return 'ok', 200
@@ -110,7 +110,7 @@ def update_trail(trail_id):
 @open_close_connection
 def add_search():
     with database.atomic():
-        c = Trail.create(**request.form.to_dict())
+        c = Trail.create(**request.json)
         return jsonify(model_to_dict(c)), 201
 
 

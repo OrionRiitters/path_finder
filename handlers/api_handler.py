@@ -9,14 +9,22 @@ keys = ['id', 'name', 'summary', 'difficulty', 'stars', 'latitude', 'longitude',
 def get_trails_from_location(city, state):
     lat, lon = geocode.geocode(city, state)
     trails = getTrails.get_trail(lat, lon)
-    new_trails = json.dumps(filter_trails(trails))
+    location = make_location(city, state)
+    new_trails = json.dumps(filter_trails(trails, location))
+    print(new_trails)
     return new_trails
 
 
 # filters trail json for rendering and saving in database
-def filter_trails(trails):
+def filter_trails(trails, location):
     new_trails = []
     for trail in trails['trails']:
         new_dict = {key: trail[key] for key in keys}
+        new_dict['location'] = location
         new_trails.append(new_dict)
     return new_trails
+
+
+def make_location(city, state):
+    location = city + ", " + state
+    return location
