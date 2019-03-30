@@ -25,6 +25,7 @@ function assembleTrailDIV(trailObj) {
     }
     // This line stores json so trail attributes can be accessed easily.
     trailEl.setAttribute('json', trailStr);
+    saveTrailBtn(trailEl);
     $('#left-box').append(trailEl);
 }
 
@@ -37,3 +38,15 @@ function assembleLeftBox(trails) {
     }
 }
 
+function saveTrailBtn(trailEl) {
+    btn = document.createElement('button');
+    btn.setAttribute('class', 'save-trail');
+    btn.innerHTML = 'Save Trail';
+    trailEl.append(btn);
+    btn.addEventListener('click', function() {
+        $.post('/save_trail',
+            trailEl.getAttribute('json')
+              );
+        console.log(trailEl.getAttribute('json'));
+    });
+}
