@@ -38,6 +38,8 @@ function assembleLeftBox(trails) {
     }
 }
 
+// This code gets a 400 error for some reason. The console.log shows the correct json is
+// being send in the request though.
 function saveTrailBtn(trailEl) {
     btn = document.createElement('button');
     btn.setAttribute('class', 'save-trail');
