@@ -17,6 +17,7 @@ def get_trails_from_location(city, state):
 
 # filters trail json for rendering and saving in database
 def filter_trails(trails, location):
+    print(f'{trails}\n\n\n{location}')
     new_trails = []
     for trail in trails['trails']:
         new_dict = {key: trail[key] for key in keys}

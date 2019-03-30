@@ -25,7 +25,7 @@ def get_trails():
         trails = api.get_trails_from_location(city, state)
         return trails 
     else:
-        bucket_list = db.get_bucket_list()
+        bucket_list = db.return_bucket_list()
         return bucket_list
 
 
