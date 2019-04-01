@@ -25,7 +25,9 @@ function assembleTrailDIV(trailObj) {
     }
     // This line stores json so trail attributes can be accessed easily.
     trailEl.setAttribute('json', trailStr);
+    trailEl.setAttribute('latitude', `lat${trailObj['latitude']}`);
     saveTrailBtn(trailEl);
+    trailEl.style.display = 'none';
     $('#left-box').append(trailEl);
 }
 
@@ -56,7 +58,7 @@ function saveTrailBtn(trailEl) {
                 alert("Trailed was added to your bucket list");
             },
             error: function () {
-                alert("Trail could not be added")
+                alert("Trail could not be added");
             }
         });
         console.dir(trailEl.getAttribute('json'));
