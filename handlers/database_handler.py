@@ -10,6 +10,7 @@ def save_trails(trail_id):
     else:
         update_trail(trail_id)
 
+
 def return_bucket_list():
     bucket_list = get_bucket_list()
     return bucket_list

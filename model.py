@@ -67,12 +67,12 @@ def open_close_connection(func):
 @open_close_connection
 def get_bucket_list():
     records = Trail.select().where(Trail.hasHiked == 0)
-    return jsonify(model_to_dict(c) for c in records)
+    return jsonify([model_to_dict(c) for c in records])
 
 @open_close_connection
 def get_hiked():
     hiked = Trail.select().where(Trail.hasHiked == 1)
-    return jsonify(model_to_dict(c) for c in hiked)
+    return jsonify([model_to_dict(c) for c in hiked])
 
 
 # return a trail record for the passed trail id
