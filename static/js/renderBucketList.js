@@ -68,24 +68,12 @@ function assembleRow(trail, tableBody) {
     if (!trail['hasHiked']) {
         btnHiked.innerHTML = 'Change "hiked" status';
         btnHiked.addEventListener('click', function (e) {
-            trail['hasHiked'] = !trail["hasHiked"];
-            console.log(e);
-            console.log($(`#k${e['target']['id'].slice(1)}`)[0].getAttribute('json'));
-
-            $.post('/update_hiked',
-                   contentType='application/json',
-                   data=$(`#k${e['target']['id'].slice(1)}`)[0].getAttribute('json')
-                  );
-        /*    $.ajax({
-                url:'/update_hiked',
-                type: "POST",
-                data: trail,
-                contentType: "application/JSON"
-            })
-                .then( res => {
-                    assembleBucketList(res);
-                }
-            ); */
+            jsonDIV = $(`#k${e['target']['id'].slice(1)}`)[0];
+            jsonOBJ = JSON.parse(jsonDIV.getAttribute('json'));
+            jsonOBJ['hasHiked'] = !jsonOBJ['hasHiked'];
+            console.log(typeof(JSON.stringify(jsonOBJ)));
+            $.post('/update_hiked', JSON.stringify(jsonOBJ));
+            //$.post('/update_hiked', JSON.stringify(jsonDIV.getAttribute('json')));
         });
         
     }

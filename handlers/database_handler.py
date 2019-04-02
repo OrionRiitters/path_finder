@@ -14,3 +14,9 @@ def save_trails(trail_id):
 def return_bucket_list():
     bucket_list = get_bucket_list()
     return bucket_list
+
+def get_hiked_trails():
+    return get_hiked()
+
+def get_all_trails():
+    return get_saved_trails()
