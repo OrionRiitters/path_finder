@@ -7,8 +7,9 @@ requests_cache.install_cache()
 
 def get_trail(lat, lon):
     key = os.environ.get('TRAIL_KEY')
+
     try:
-        query = {'lat':lat, 'lon':lon, 'maxDistance':10, 'maxResults':5, 'key': key}
+        query = {'lat':lat, 'lon':lon, 'maxDistance':15, 'maxResults':25, 'key': key}
         url = 'https://www.hikingproject.com/data/get-trails'
 
         data = requests.get(url, params=query).json()

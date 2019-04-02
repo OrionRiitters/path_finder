@@ -25,7 +25,10 @@ function assembleTrailDIV(trailObj) {
     }
     // This line stores json so trail attributes can be accessed easily.
     trailEl.setAttribute('json', trailStr);
+    trailEl.setAttribute('latitude', `lat${trailObj['latitude']}`);
+    trailEl.setAttribute('id', 'k' + trailObj['id']);
     saveTrailBtn(trailEl);
+    trailEl.style.display = 'none';
     $('#left-box').append(trailEl);
 }
 
@@ -39,7 +42,7 @@ function assembleLeftBox(trails) {
 }
 
 // This code gets a 400 error for some reason. The console.log shows the correct json is
-// being send in the request though.
+// being send in the reques t though.
 function saveTrailBtn(trailEl) {
     btn = document.createElement('button');
     btn.setAttribute('class', 'save-trail');
@@ -56,9 +59,9 @@ function saveTrailBtn(trailEl) {
                 alert("Trailed was added to your bucket list");
             },
             error: function () {
-                alert("Trail could not be added")
+                alert("Trail could not be added");
             }
         });
-        console.dir(trailEl.getAttribute('json'));
+        console.dir(trailEl);
     });
 }

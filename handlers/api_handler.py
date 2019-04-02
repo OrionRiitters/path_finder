@@ -11,7 +11,6 @@ def get_trails_from_location(city, state):
     trails = getTrails.get_trail(lat, lon)
     location = make_location(city, state)
     new_trails = json.dumps(filter_trails(trails, location))
-    print(new_trails)
     return new_trails
 
 

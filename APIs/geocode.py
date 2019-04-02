@@ -23,4 +23,3 @@ def geocode(city, state):
     except requests.exceptions.RequestException as error:
         print("Something went wrong", error)
     return lat, long
-# geocode('maple grove', 'mn')
