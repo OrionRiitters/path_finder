@@ -61,11 +61,15 @@ function renderMap(trails) {
                 // Find marker based on latitude
                 trailEl = document.querySelector(`div[latitude='lat${e["target"]["_latlng"]["lat"]}']`);
                 // Hide all trail elements, show only selected trail.
-                trails = document.getElementsByClassName('trail');
-                for (i = 0; i < trails.length; i++) {
-                    trails[i].style.display = 'none';
-                }
-                trailEl.style.display = '';
+                hideMostTrails(trailEl);
         });
     }
+}
+
+function hideMostTrails(trailEl) {
+    trails = document.getElementsByClassName('trail');
+    for (i = 0; i < trails.length; i++) {
+        trails[i].style.display = 'none';
+    }
+    trailEl.style.display = '';
 }

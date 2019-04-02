@@ -22,6 +22,6 @@ $('#find-path').on('click', function() {
 $('#saved-trails').on('click', function() {
     $.get('/get_trails')
         .then(res => {
-            // It seems that rendering a template might be easiest here.
+            assembleBucketList(res);
         });
 });

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-
         {% block head %}
         <title>Path Finder</title>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
@@ -16,18 +15,19 @@
                 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
                 crossorigin=""></script>
         {% endblock %}
-
     </head>
 
     <body>
 
         {% block body %}
         <div id="app" class="grid-container app-container">
+            {% block header %}
             <div id="app-header">
                 <div id="header-title" class="vertical-center">
                     <h1>Path Finder</h1>
                 </div>
             </div>
+            {% endblock %}
 
             {% block search %}
             <div id="search">
