@@ -70,6 +70,13 @@
     color: white;
 }
 
+#bucket-list {
+    grid-row: 8 / 36;
+    grid-column: 2 / 32;
+    background-color: #0000ff;
+    color: white;
+}
+
 .btn-secondary {
     width: 25%;
 }
