@@ -1,7 +1,9 @@
+
 /*
  * Use CSS Grid to divide page into 32 rows and 18 columns. These numbers are used
  * because they are multiples of the 16:9 aspect ratio. I think that makes sense.
  */
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(32, 1fr);
@@ -61,6 +63,7 @@
     grid-column: 2 / 9;
     background-color: #00ff00;
     color: black;
+    overflow: auto;
 }
 
 #right-box {
@@ -68,13 +71,26 @@
     grid-column: 10 / 32;
     background-color: #0000ff;
     color: white;
+    overflow: auto;
 }
 
 #bucket-list {
     grid-row: 8 / 36;
     grid-column: 2 / 32;
-    background-color: #0000ff;
+    background-color: #0440ff;
     color: white;
+}
+
+table {
+    width: 100%;
+}
+
+tbody {
+    width: 100%;
+}
+
+tr {
+    height: 52px;
 }
 
 .btn-secondary {
@@ -97,5 +113,12 @@
 #map {
     height: 99%;
     width: 99%;
-    
+}
+
+.btn-right {
+    height: 80%;
+    width: 80%;
+}
+.btn-left {
+    width: 60%;
 }

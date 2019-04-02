@@ -50,6 +50,7 @@ function assembleRow(trail, tableBody) {
     let detailsEl = document.createElement('td');
     let btnDetails = document.createElement('button');
     btnDetails.setAttribute('id', `b${trail['id']}`);
+    btnDetails.setAttribute('class', 'btn btn-secondary btn-right');
     btnDetails.innerHTML = 'View Details';
     detailsEl.append(btnDetails);
     row.append(detailsEl);
@@ -61,6 +62,7 @@ function assembleRow(trail, tableBody) {
 
     let hikedEl = document.createElement('td');
     let btnHiked = document.createElement('button');
+    btnHiked.setAttribute('class', 'btn btn-secondary btn-right');
     btnHiked.setAttribute('id', `h${trail['id']}`);
     hikedEl.append(btnHiked);
     row.append(hikedEl);
