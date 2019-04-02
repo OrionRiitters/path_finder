@@ -36,6 +36,14 @@ def save_trails():
     db.save_trails(id)
     return "trail added successfully"
 
+@app.route('/update_hiked', methods=['POST'])
+def update_hiked():
+    form = request.get_json(force=True)
+    print(form)
+    id = form["id"]
+    db.update_trail(id)
+    return db.return_bucket_list()
+
 
 if __name__ == '__main__':
     app.run(debug=True)
