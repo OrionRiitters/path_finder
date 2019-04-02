@@ -4,7 +4,9 @@ from flask import g, jsonify, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-database = SqliteDatabase('bucketList.db')
+db_url= 'bucketList.db'
+
+database = SqliteDatabase(db_url)
 
 
 # Table Model for user saved trail records
@@ -26,6 +28,9 @@ class Trail(Model):
     class Meta:
         database = database
 
+ # overwrite str method to show the information of a Trail record
+    def __str__(self):
+        return (f'ID: {self.id}, Name: {self.name}, Location: {self.location}, Summary: {self.summary}, Difficulty: {self.difficulty}, Stars: {self.stars}, Latitude: {self.latitude}, Longitude: {self.longitude}, Length: {self.length} Photo URL: {self.imgSmallMed}, You have hiked this: {self.hasHiked}')
 
 # Create table model for saved search cache
 class Search (Model):
