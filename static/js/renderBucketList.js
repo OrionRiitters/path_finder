@@ -17,13 +17,14 @@ function assembleTable(res) {
 
     let nameHeader = document.createElement('th');
     nameHeader.innerHTML = 'Trail Name';
+    tableBody.appendChild(nameHeader);
 
     let hasHikedHeader = document.createElement('th');
     hasHikedHeader.innerHTML = 'Hiked?';
+    tableBody.appendChild(hasHikedHeader);
 
     let showDetailsHeader = document.createElement('th');
-    tableBody.appendChild(nameHeader);
-    tableBody.appendChild(hasHikedHeader);
+    showDetailsHeader.innerHTML = 'Details';
     tableBody.appendChild(showDetailsHeader);
 
     for (trail in res) {
@@ -46,35 +47,36 @@ function assembleRow(trail, tableBody) {
     hasHiked.append(hasHikedText);
     row.append(hasHiked);
 
-    let btn = document.createElement('button');
-    btn.setAttribute('id', `b${trail['id']}`);
-    row.append(btn);
-    tableBody.append(row);
-    btn.addEventListener('click', function(e) {
+    let detailsEl = document.createElement('td');
+    let btnDetails = document.createElement('button');
+    btnDetails.setAttribute('id', `b${trail['id']}`);
+    btnDetails.setAttribute('class', 'btn btn-secondary btn-right');
+    btnDetails.innerHTML = 'View Details';
+    detailsEl.append(btnDetails);
+    row.append(detailsEl);
+    btnDetails.addEventListener('click', function(e) {
         key = 'k' + `${e['target']['id']}`.slice(1);
         trailEl = $(`#${key}`);
         hideMostTrails(trailEl[0]);
     });
+
+    let hikedEl = document.createElement('td');
+    let btnHiked = document.createElement('button');
+    btnHiked.setAttribute('class', 'btn btn-secondary btn-right');
+    btnHiked.setAttribute('id', `h${trail['id']}`);
+    hikedEl.append(btnHiked);
+    row.append(hikedEl);
+    tableBody.append(row);
+
+    btnHiked.innerHTML = 'Change "hiked" status';
+    btnHiked.addEventListener('click', function (e) {
+        jsonDIV = $(`#k${e['target']['id'].slice(1)}`)[0];
+        jsonOBJ = JSON.parse(jsonDIV.getAttribute('json'));
+        jsonOBJ['hasHiked'] = !jsonOBJ['hasHiked'];
+        $.post('/update_hiked', JSON.stringify(jsonOBJ))
+            .then(res => {
+            assembleBucketList(res);
+            });
+    });
+
 }
-
-
-
-  /*  for (i = 0 ; i < 2; i++) {
-        let td = document.createElement('td');
-        let tn = document.createTextNode(`${trail[attributes[i]]}`);
-        td.append(tn);
-        tr.append(td);
-    } 
-
-
-
-    rowString = 
-        `
-        <tr>
-        <td>${trail['name']}</td>
-        <td>${trail['hasHiked'] == 1 ? 'Yes' : 'No'}
-        <button id='${buttonID}'>Details</button>
-        </tr>
-        `;
-    return rowString;    */
-

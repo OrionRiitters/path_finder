@@ -45,7 +45,7 @@ function assembleLeftBox(trails) {
 // being send in the reques t though.
 function saveTrailBtn(trailEl) {
     btn = document.createElement('button');
-    btn.setAttribute('class', 'save-trail');
+    btn.setAttribute('class', 'save-trail btn btn-secondary btn-left');
     btn.innerHTML = 'Save Trail';
     trailEl.append(btn);
     btn.addEventListener('click', function() {

@@ -25,7 +25,7 @@ def get_trails():
         trails = api.get_trails_from_location(city, state)
         return trails 
     else:
-        bucket_list = db.return_bucket_list()
+        bucket_list = db.get_all_trails()
         return bucket_list
 
 
@@ -35,6 +35,13 @@ def save_trails():
     id = form["id"]
     db.save_trails(id)
     return "trail added successfully"
+
+@app.route('/update_hiked', methods=['POST'])
+def update_hiked():
+    data = request.get_json(force=True)
+    print(data['id'])
+    db.update_trail(data['id'])
+    return db.get_all_trails()
 
 
 if __name__ == '__main__':

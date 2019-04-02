@@ -1,5 +1,6 @@
 """ Database model for Hiking Bucket List """
 
+import json
 from flask import g, jsonify, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
@@ -64,6 +65,13 @@ def open_close_connection(func):
 
 
 # return all trail records from the database based on whether they have or have not hiked the trail
+
+@open_close_connection
+def get_saved_trails():
+    records = Trail.select()
+    return jsonify([model_to_dict(c) for c in records])
+
+
 @open_close_connection
 def get_bucket_list():
     records = Trail.select().where(Trail.hasHiked == 0)
@@ -71,8 +79,8 @@ def get_bucket_list():
 
 @open_close_connection
 def get_hiked():
-    hiked = Trail.select().where(Trail.hasHiked == 1)
-    return jsonify([model_to_dict(c) for c in hiked])
+    records = Trail.select().where(Trail.hasHiked == 1)
+    return jsonify([model_to_dict(c) for c in records])
 
 
 # return a trail record for the passed trail id
@@ -100,7 +108,8 @@ def add_trail():
 @open_close_connection
 def update_trail(trail_id):
     with database.atomic():
-        Trail.update(**request.json)\
+        print(request.get_json(force=True))
+        Trail.update(**request.get_json(force=True))\
             .where(Trail.id == trail_id)\
             .execute()
         return 'ok', 200
