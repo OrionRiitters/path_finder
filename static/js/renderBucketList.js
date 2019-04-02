@@ -65,16 +65,16 @@ function assembleRow(trail, tableBody) {
     hikedEl.append(btnHiked);
     row.append(hikedEl);
     tableBody.append(row);
-    if (!trail['hasHiked']) {
-        btnHiked.innerHTML = 'Change "hiked" status';
-        btnHiked.addEventListener('click', function (e) {
-            jsonDIV = $(`#k${e['target']['id'].slice(1)}`)[0];
-            jsonOBJ = JSON.parse(jsonDIV.getAttribute('json'));
-            jsonOBJ['hasHiked'] = !jsonOBJ['hasHiked'];
-            console.log(typeof(JSON.stringify(jsonOBJ)));
-            $.post('/update_hiked', JSON.stringify(jsonOBJ));
-            //$.post('/update_hiked', JSON.stringify(jsonDIV.getAttribute('json')));
-        });
-        
-    }
+
+    btnHiked.innerHTML = 'Change "hiked" status';
+    btnHiked.addEventListener('click', function (e) {
+        jsonDIV = $(`#k${e['target']['id'].slice(1)}`)[0];
+        jsonOBJ = JSON.parse(jsonDIV.getAttribute('json'));
+        jsonOBJ['hasHiked'] = !jsonOBJ['hasHiked'];
+        $.post('/update_hiked', JSON.stringify(jsonOBJ))
+            .then(res => {
+            assembleBucketList(res);
+            });
+    });
+
 }

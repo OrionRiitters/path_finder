@@ -41,7 +41,7 @@ def update_hiked():
     data = request.get_json(force=True)
     print(data['id'])
     db.update_trail(data['id'])
-    return db.return_bucket_list()
+    return db.get_all_trails()
 
 
 if __name__ == '__main__':
