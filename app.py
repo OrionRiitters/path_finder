@@ -1,13 +1,11 @@
-
 # this class will start the app will communicate directly with the frontend and the route handler
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request
 from states import STATES
-import json
-import model
 import handlers.api_handler as api
 import handlers.database_handler as db
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -36,10 +34,10 @@ def save_trails():
     db.save_trails(id)
     return "trail added successfully"
 
+
 @app.route('/update_hiked', methods=['POST'])
 def update_hiked():
     data = request.get_json(force=True)
-    print(data['id'])
     db.update_trail(data['id'])
     return db.get_all_trails()
 
