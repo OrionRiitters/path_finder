@@ -75,7 +75,10 @@ function assembleRow(trail, tableBody) {
         jsonOBJ['hasHiked'] = !jsonOBJ['hasHiked'];
         $.post('/update_hiked', JSON.stringify(jsonOBJ))
             .then(res => {
-            assembleBucketList(res);
+                assembleBucketList(res);
+                key = 'k' + `${e['target']['id']}.slice(1)`;
+                trailEl = $(`#${key}`);
+                hideMostTrails(trailEl[0]);
             });
     });
 

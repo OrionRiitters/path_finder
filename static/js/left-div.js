@@ -16,10 +16,11 @@ function assembleTrailDIV(trailObj) {
     // For attribute in trail object, create a <p> and append it to trail DIV.
     for (attr in trailObj) {
         // If attribute is 'id' or 'imgMedium', do not create <p>
-        if (attr[0] != 'i') {
+        attrValue = attrSwitch(attr, trailObj[attr]);
+        if (attrValue) {
             let trailAttr = document.createElement('p');
             trailAttr.className = 'trail-attr';
-            trailAttr.innerHTML = `<b>${capitalize(attr)}:</b> ${trailObj[attr]}`;
+            trailAttr.innerHTML = `${capitalize(attr)}: ${attrValue}`;
             trailEl.append(trailAttr);
         }
     }
@@ -64,4 +65,59 @@ function saveTrailBtn(trailEl) {
         });
         console.dir(trailEl);
     });
+}
+
+function createChildren(attr) {
+    // For attribute in trail object, create a <p> and append it to trail DIV.
+    for (attr in trailObj) {
+        // If attribute is 'id' or 'imgMedium', do not create <p>
+        if (attr[0] != 'i') {
+            let trailAttr = document.createElement('p');
+            trailAttr.className = 'trail-attr';
+            trailAttr.innerHTML = `<b>${capitalize(attr)}:</b> ${trailObj[attr]}`;
+            trailEl.append(trailAttr);
+        }
+    }
+}
+
+function attrSwitch(key, value) {
+    returnable = null;
+
+    switch(key) {
+    case 'difficulty':
+        returnable = capitalize(value);
+        break;
+    case 'length':
+        returnable = value + ' miles';
+        break;
+    case 'latitude':
+        returnable = value;
+        break;
+    case 'longitude':
+        returnable = value;
+        break;
+    case 'location':
+        if (value[0] == ',') {
+            returnable = capitalize(value.slice(2));
+        } else {
+            returnable = capitalize(value);
+        }
+        break;
+    case 'name':
+        returnable = value;
+        break;
+    case 'stars':
+        returnable = value;
+        break;
+    case 'summary':
+        returnable = value;
+        break;
+    default:
+        returnable = null;
+    }
+    return returnable;
+}
+
+function placeHolderText(){
+    document.getElementById('left-box').innerHTML = 'Find a path to view the details here!';
 }

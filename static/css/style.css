@@ -61,7 +61,7 @@
 #left-header {
     grid-row: 5 / 8;
     grid-column: 2 / 9;
-    background-color: rgba(162, 240, 208, 0.8);
+    background-color: #cce6bc;
     color: #323232;
     vertical-align: center;
     text-align: center;
@@ -125,7 +125,8 @@ td {
 }
 
 .btn-secondary:hover {
-    background-color: #a2f0d0;
+    //background-color: #a2f0d0;
+    background-color: #cce6bc;
     color: #3f3f3f;
 }
 
@@ -190,4 +191,8 @@ tr {
 td {
     padding: 8px;
     border-top: 1px solid rgba(63, 63, 63, 0.95);
+}
+
+th {
+    color: rgba(200, 220, 220, 0.8);
 }
