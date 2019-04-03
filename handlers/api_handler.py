@@ -9,8 +9,12 @@ keys = ['id', 'name', 'summary', 'difficulty', 'stars', 'latitude', 'longitude',
 # gets trails from location
 # parameter: city and state returned from the user
 def get_trails_from_location(city, state):
-    lat, lon = geocode.geocode(city, state)
-    trails = getTrails.get_trail(lat, lon)
+    loc = geocode.geocode(city, state)
+    if len(loc) == 0:
+        return json.dumps(loc)
+    trails = getTrails.get_trail(loc[0], loc[1])
+    if len(trails['trails']) == 0:
+        return json.dumps(trails['trails'])
     location = make_location(city, state)
     new_trails = json.dumps(filter_trails(trails, location))
     return new_trails

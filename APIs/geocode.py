@@ -13,7 +13,8 @@ def geocode(city, state):
         data = requests.get(url, params=query).json()
         lat = data[0]['lat']
         long = data[0]['lon']
-        print(lat, long)
+    except IndexError as ie:
+        return data
     except requests.exceptions.HTTPError as http_error:
         print("There's a Http Error", http_error)
     except requests.exceptions.ConnectionError as conn:
@@ -22,4 +23,5 @@ def geocode(city, state):
         print("There is a timeout Error", timeout)
     except requests.exceptions.RequestException as error:
         print("Something went wrong", error)
+
     return lat, long

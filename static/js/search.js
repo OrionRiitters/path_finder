@@ -14,6 +14,8 @@ $('#find-path').on('click', function() {
             assembleLeftBox(trails);
             renderMap(trails);
         }
+    ).fail(
+        alert("City not found")
     );
 });
 
