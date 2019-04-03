@@ -4,7 +4,7 @@ from flask import g, jsonify, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 
-db_url= 'bucketList.db'
+db_url = 'bucketList.db'
 
 database = SqliteDatabase(db_url)
 
@@ -28,9 +28,10 @@ class Trail(Model):
     class Meta:
         database = database
 
- # overwrite str method to show the information of a Trail record
+    # overwrite str method to show the information of a Trail record
     def __str__(self):
-        return (f'ID: {self.id}, Name: {self.name}, Location: {self.location}, Summary: {self.summary}, Difficulty: {self.difficulty}, Stars: {self.stars}, Latitude: {self.latitude}, Longitude: {self.longitude}, Length: {self.length} Photo URL: {self.imgSmallMed}, You have hiked this: {self.hasHiked}')
+        return f'ID: {self.id}, Name: {self.name}, Location: {self.location}, Summary: {self.summary}, Difficulty: {self.difficulty}, Stars: {self.stars}, Latitude: {self.latitude}, Longitude: {self.longitude}, Length: {self.length} Photo URL: {self.imgSmallMed}, You have hiked this: {self.hasHiked}'
+
 
 # Create table model for saved search cache
 class Search (Model):
@@ -61,18 +62,17 @@ def open_close_connection(func):
     return decorated_function
 
 
-
 # FOR ALL BELOW DATABASE METHODS
 # The Following imported functions are applied
 # Playhouse shortcut model_to_dict: Converts the record from a table model object (c) to a dictionary object
 # Flask function jsonify: Converts the dictionary to JSON to return a JSON object to the api
-
 
 # return all trail records from the database based on whether they have or have not hiked the trail
 @open_close_connection
 def get_bucket_list():
     records = Trail.select().where(Trail.hasHiked == 0)
     return jsonify([model_to_dict(c) for c in records])
+
 
 @open_close_connection
 def get_hiked():
@@ -110,8 +110,16 @@ def update_trail(trail_id):
             .execute()
         return 'ok', 200
 
+@open_close_connection
+def delete_trail(trail_id):
+    with database.atomic():
+        Trail.delete()\
+            .where(Trail.id == trail_id)\
+            .execute()
 
-# add a search location to the cache
+    return 'ok', 200
+
+
 @open_close_connection
 def add_search():
     with database.atomic():
