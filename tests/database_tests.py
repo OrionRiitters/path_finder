@@ -39,7 +39,7 @@ class TestAddTrailDB(TestCase):
     # BELOW TESTS - Test that the database is working properly first, not the methods.
     def test_add_trail(self):
         trail = test_model.Trail.get(id=12345)
-        self.assertEquals(trail.id, 12345)
+        self.assertEqual(trail.id, 12345)
 
 
     def test_update_trail(self):
@@ -62,13 +62,14 @@ class TestAddTrailDB(TestCase):
             hasHiked=False).save()
 
         trails = test_model.Trail.select().where(test_model.Trail.hasHiked == 0)
-        trail_keys = model_to_dict(trails)
-        sql_vals = test_model.database.execute_sql('SELECT * FROM Trail WHERE hasHiked = FALSE').fetchall()
-        self.assertEquals(len(trail_keys.keys()), len(sql_vals))
-
+        trail_keys = [model_to_dict(trail) for trail in trails]
+        sql_vals = test_model.database.execute_sql('SELECT * FROM Trail WHERE hasHiked = 0').fetchall()
+        self.assertEqual(len(trail_keys[0].keys()), len(sql_vals[0]))
+        count = 0
         for row in sql_vals:
-            self.assertIn(row[0], trail_keys.keys())
-            self.assertEqual(trail_keys[row[0]], row[1])
+            self.assertIn(row[count], trail_keys[count].values())
+            self.assertEqual(trail_keys[count]['id'], row[0])
+            count += 1
 
 
 
