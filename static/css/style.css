@@ -5,7 +5,6 @@
  */
 
 #app {
-    //background-color: #dcdcdc;
     font-family: 'Archivo', sans-serif;
 }
 
@@ -15,14 +14,12 @@
     grid-template-rows: repeat(36, 1fr);
     height: 100vh;
     width: 100vw;
-    //background-color: #f4f3f3;
 }
 
 #app-header {
     text-align: center;
     grid-row: 1 / 5;
     grid-column: 2 / 32;
-    //background-color: #dcdcdc;
     color: #3f3f3f;
     font-family: 'Archivo', sans-serif;
     font-weight: 'bold';
@@ -58,6 +55,7 @@
     width: 20%;
 }
 
+/* Title of left-box. */
 #left-header {
     grid-row: 5 / 8;
     grid-column: 2 / 9;
@@ -81,6 +79,7 @@
     border: 2px solid rgba(63, 63, 63, 0.95);
 }
 
+/* Rules that everything in the right box obey. */
 #right-box {
     grid-row: 8 / 36;
     grid-column: 10 / 32;
@@ -101,6 +100,7 @@
     font-family: 'Archivo', sans-serif;
 }
 
+/* Below this are 3 selectors that affect the bucket list table. */
 table {
     width: 100%;
 }
@@ -130,6 +130,7 @@ td {
     color: #3f3f3f;
 }
 
+/* Used to center things vertically. */
 .vertical-center {
     margin: 0;
     position: relative;
@@ -158,6 +159,7 @@ td {
 
 }
 
+/* Buttons in search bar. */
 .btn-primary {
     background-color: #f5f5f5;
     color: #3f3f3f;
@@ -173,6 +175,7 @@ td {
     font-weight: bold;
 }
 
+ /* Each detail listener in the left-box. */
 .trail-attr {
     padding-right: 8px;
     padding-left: 8px;
@@ -180,12 +183,7 @@ td {
     padding-top: 6px;
     border-bottom: 1px solid rgba(63, 63, 63, 0.95);
     margin: 0px;
-    //box-shadow: 0px 1px 32px 4px rgba(63, 63, 63, 0.95) inset; 
 
-}
-
-tr {
-    //box-shadow: 0px 1px 32px 8px rgba(63, 63, 63, 0.95) inset; 
 }
 
 td {

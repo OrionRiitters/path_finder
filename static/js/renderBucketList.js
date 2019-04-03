@@ -1,3 +1,4 @@
+/* Call functions from below to append proper DIVs to right-box */
 function assembleBucketList(res) {
 
     assembleLeftBox(res);
@@ -10,6 +11,7 @@ function assembleBucketList(res) {
     $('#right-box').append(bucketList);
 }
 
+/* Assemble table "frame" onto which rows will be appended. */
 function assembleTable(res) {
     let table = document.createElement('table');
     let tableBody = document.createElement('tbody');
@@ -34,6 +36,7 @@ function assembleTable(res) {
     return table;
 }
 
+/* Create a td element for every column. */
 function assembleRow(trail, tableBody) {
     let row = document.createElement('tr');
 
@@ -54,6 +57,7 @@ function assembleRow(trail, tableBody) {
     btnDetails.innerHTML = 'View Details';
     detailsEl.append(btnDetails);
     row.append(detailsEl);
+    /* Event listener for details button */
     btnDetails.addEventListener('click', function(e) {
         key = 'k' + `${e['target']['id']}`.slice(1);
         trailEl = $(`#${key}`);
@@ -69,6 +73,7 @@ function assembleRow(trail, tableBody) {
     tableBody.append(row);
 
     btnHiked.innerHTML = 'Change "hiked" status';
+    /* Event listener for hiked status button */
     btnHiked.addEventListener('click', function (e) {
         jsonDIV = $(`#k${e['target']['id'].slice(1)}`)[0];
         jsonOBJ = JSON.parse(jsonDIV.getAttribute('json'));

@@ -8,9 +8,7 @@ $('#find-path').on('click', function() {
     $.post('/get_trails', {
         city: city,
         state: state
-    })   /* Parse JSON and run element assembly functions to prepare left-box.
-          * TODO: Create functions to render leaflet map with JSON
-          */
+    })   /* Parse JSON and run element assembly functions to prepare left-box. */
         .then(res => {
             trails = JSON.parse(res);
             assembleLeftBox(trails);
@@ -19,6 +17,7 @@ $('#find-path').on('click', function() {
     );
 });
 
+/* When "saved trails" button is clicked, run assembleBucketList on the response. */
 $('#saved-trails').on('click', function() {
     $.get('/get_trails')
         .then(res => {

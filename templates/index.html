@@ -2,6 +2,7 @@
 
 {% block head %}
 {{ super() }}
+<!-- These may not need be here but I am afraid of deleting them right now. -->
 <link async defer rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
       integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
       crossorigin=""/>
@@ -12,6 +13,7 @@
 
 {% block body %}
 {{ super() }}
+<!-- Get those nice scripts going! -->
 <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 <script src="{{ url_for('static', filename='js/renderMap.js') }}"></script>
 <script src="{{ url_for('static', filename='js/left-div.js') }}"></script>

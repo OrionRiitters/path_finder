@@ -5,13 +5,19 @@
         <title>Path Finder</title>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
 
+        <!-- Bootstrap CSS -->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+        <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/' + cssFile) }}">
+        <!-- jQuery script -->
         <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+        <!-- Leaflet CSS -->
         <link async defer rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
               integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
               crossorigin=""/>
+        <!-- Leaflet script -->
         <script async defer src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
                 integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
                 crossorigin=""></script>
@@ -31,6 +37,7 @@
             {% endblock %}
 
             {% block search %}
+            <!-- Create search bar -->
             <div id="search">
                 <input id="city" type="text" class="vertical-center" placeholder="Enter City Name">
                 <select id="state" class="vertical-center">
@@ -50,6 +57,7 @@
             {% endblock %}
 
             {% block left %}
+            <!-- Initalize left DIVs -->
             <div id="left-header">
                 <p>Details</p>
             </div>
@@ -59,6 +67,7 @@
             {% endblock %}
 
             {% block right %}
+            <!-- Initialize right DIVs -->
             <div id="right-box">
 
             </div>

@@ -66,6 +66,10 @@ function renderMap(trails) {
     }
 }
 
+/*
+ * This function hides all of the trails in the left-box DIV. Then the function changes the "display"
+ * value of the trailEl argument.
+ */
 function hideMostTrails(trailEl) {
     trails = document.getElementsByClassName('trail');
     for (i = 0; i < trails.length; i++) {

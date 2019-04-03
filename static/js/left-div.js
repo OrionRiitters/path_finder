@@ -42,9 +42,9 @@ function assembleLeftBox(trails) {
     }
 }
 
-// This code gets a 400 error for some reason. The console.log shows the correct json is
-// being send in the reques t though.
+
 function saveTrailBtn(trailEl) {
+    // Creates the 'save trail' button and adds an event listener.
     btn = document.createElement('button');
     btn.setAttribute('class', 'save-trail btn btn-secondary btn-left');
     btn.innerHTML = 'Save Trail';
@@ -81,6 +81,8 @@ function createChildren(attr) {
 }
 
 function attrSwitch(key, value) {
+
+    // This function will return text formatted appropriately based on the key parameter
     returnable = null;
 
     switch(key) {
@@ -116,8 +118,4 @@ function attrSwitch(key, value) {
         returnable = null;
     }
     return returnable;
-}
-
-function placeHolderText(){
-    document.getElementById('left-box').innerHTML = 'Find a path to view the details here!';
 }
