@@ -14,9 +14,7 @@ $('#find-path').on('click', function() {
             assembleLeftBox(trails);
             renderMap(trails);
         }
-    ).fail(
-        alert("City not found")
-    );
+    )
 });
 
 /* When "saved trails" button is clicked, run assembleBucketList on the response. */
