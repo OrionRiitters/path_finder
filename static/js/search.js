@@ -11,10 +11,14 @@ $('#find-path').on('click', function() {
     })   /* Parse JSON and run element assembly functions to prepare left-box. */
         .then(res => {
             trails = JSON.parse(res);
-            assembleLeftBox(trails);
-            renderMap(trails);
+            if (trails[0]) {
+                assembleLeftBox(trails);
+                renderMap(trails);
+            } else {
+                alert('No paths found!');
+            }
         }
-    )
+             );
 });
 
 /* When "saved trails" button is clicked, run assembleBucketList on the response. */

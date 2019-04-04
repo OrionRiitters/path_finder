@@ -3,3 +3,4 @@ venv/
 bucketList.db
 .idea
 cache.sqlite
+.#*
